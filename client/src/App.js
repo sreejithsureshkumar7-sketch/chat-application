@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Chat from './components/Chat/Chat';
-import Join from './components/join/join';
+import Join from './components/join/Join';
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
