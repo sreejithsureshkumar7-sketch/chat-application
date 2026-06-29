@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import queryString from 'query-string';
 import io from "socket.io-client";
 
-import TextContainer from '../textContainer/textContainer';
+import TextContainer from '../textContainer/TextContainer';
 import Messages from '../messages/messages';
 import InfoBar from '../infoBar/infoBar';
 import Input from '../input/input';
