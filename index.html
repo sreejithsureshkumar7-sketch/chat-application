@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Secure Chat Application">
+    <title>SecureChat - Authentication</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="auth-body">
+    <div class="auth-container">
+        <div class="auth-card">
+            <!-- Branding -->
+            <div class="auth-header">
+                <div class="auth-logo">
+                    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="48" height="48" rx="12" fill="#6366F1"/>
+                        <path d="M24 16C24 16 28 20 28 24C28 27.314 26.209 30.125 23.5 31.5V34C23.5 34.827 22.827 35.5 22 35.5C21.173 35.5 20.5 34.827 20.5 34V31.5C17.791 30.125 16 27.314 16 24C16 20 20 16 24 16Z" fill="white"/>
+                    </svg>
+                </div>
+                <h1 class="auth-title">SecureChat</h1>
+                <p class="auth-subtitle">End-to-End Encrypted Messaging</p>
+            </div>
+
+            <!-- Tab Navigation -->
+            <div class="auth-tabs">
+                <button type="button" class="auth-tab active" data-tab="login">
+                    Sign In
+                </button>
+                <button type="button" class="auth-tab" data-tab="register">
+                    Sign Up
+                </button>
+            </div>
+
+            <!-- Login Form -->
+            <form id="loginForm" class="auth-form active" data-tab-content="login" novalidate>
+                <div class="form-group">
+                    <label for="loginEmail" class="form-label">Email Address</label>
+                    <input 
+                        type="email" 
+                        id="loginEmail" 
+                        class="form-input" 
+                        placeholder="you@example.com"
+                        maxlength="254"
+                        autocomplete="off"
+                        required
+                    >
+                    <span class="form-error" id="loginEmailError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="loginPassword" class="form-label">Password</label>
+                    <div class="password-wrapper">
+                        <input 
+                            type="password" 
+                            id="loginPassword" 
+                            class="form-input" 
+                            placeholder="••••••••"
+                            maxlength="128"
+                            autocomplete="off"
+                            required
+                        >
+                        <button type="button" class="password-toggle" data-target="loginPassword">
+                            <svg class="eye-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                        </button>
+                    </div>
+                    <span class="form-error" id="loginPasswordError"></span>
+                </div>
+
+                <button type="submit" class="auth-btn">Sign In</button>
+                <span class="form-error" id="loginFormError"></span>
+            </form>
+
+            <!-- Register Form -->
+            <form id="registerForm" class="auth-form" data-tab-content="register" novalidate>
+                <div class="form-group">
+                    <label for="registerUsername" class="form-label">Full Name</label>
+                    <input 
+                        type="text" 
+                        id="registerUsername" 
+                        class="form-input" 
+                        placeholder="John Doe"
+                        maxlength="100"
+                        autocomplete="off"
+                        required
+                    >
+                    <span class="form-error" id="registerUsernameError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="registerEmail" class="form-label">Email Address</label>
+                    <input 
+                        type="email" 
+                        id="registerEmail" 
+                        class="form-input" 
+                        placeholder="you@example.com"
+                        maxlength="254"
+                        autocomplete="off"
+                        required
+                    >
+                    <span class="form-error" id="registerEmailError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="registerPassword" class="form-label">Password (min 8 characters)</label>
+                    <div class="password-wrapper">
+                        <input 
+                            type="password" 
+                            id="registerPassword" 
+                            class="form-input" 
+                            placeholder="••••••••"
+                            maxlength="128"
+                            autocomplete="off"
+                            minlength="8"
+                            required
+                        >
+                        <button type="button" class="password-toggle" data-target="registerPassword">
+                            <svg class="eye-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                        </button>
+                    </div>
+                    <span class="form-error" id="registerPasswordError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="registerConfirmPassword" class="form-label">Confirm Password</label>
+                    <div class="password-wrapper">
+                        <input 
+                            type="password" 
+                            id="registerConfirmPassword" 
+                            class="form-input" 
+                            placeholder="••••••••"
+                            maxlength="128"
+                            autocomplete="off"
+                            required
+                        >
+                        <button type="button" class="password-toggle" data-target="registerConfirmPassword">
+                            <svg class="eye-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                        </button>
+                    </div>
+                    <span class="form-error" id="registerConfirmPasswordError"></span>
+                </div>
+
+                <div class="form-group checkbox">
+                    <input 
+                        type="checkbox" 
+                        id="acceptTerms" 
+                        class="checkbox-input"
+                        required
+                    >
+                    <label for="acceptTerms" class="checkbox-label">
+                        I agree to the Terms of Service and Privacy Policy
+                    </label>
+                    <span class="form-error" id="acceptTermsError"></span>
+                </div>
+
+                <button type="submit" class="auth-btn">Create Account</button>
+                <span class="form-error" id="registerFormError"></span>
+            </form>
+
+            <!-- Security Notice -->
+            <div class="auth-footer">
+                <p class="security-notice">🔒 Your messages are encrypted end-to-end</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+</body>
+</html>
