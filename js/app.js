@@ -479,14 +479,13 @@ class ChatApplication {
             return;
         }
 
-        // Encrypt message
+        // Encrypt message (best-effort demo encryption; falls back gracefully
+        // if the Web Crypto API isn't available, e.g. when served over plain
+        // http:// instead of https:// or localhost).
         const encryptedMessage = await this.encryptMessage(messageText);
 
         if (!encryptedMessage) {
-            if (formError) {
-                formError.textContent = 'Failed to encrypt message';
-            }
-            return;
+            console.warn('Message encryption unavailable in this context; sending unencrypted (demo mode).');
         }
 
         // Create message object

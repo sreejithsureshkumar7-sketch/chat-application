@@ -156,8 +156,10 @@ class AuthManager {
         }
 
         // Remove potentially dangerous characters (basic XSS protection)
-        // Allow alphanumeric, spaces, and basic punctuation
-        const xssPattern = /<script|javascript:|onerror|onclick|onload|eval/gi;
+        // Match actual attack patterns (script tags, javascript: URIs, inline
+        // event-handler attributes) rather than bare substrings like "eval",
+        // which would otherwise reject legitimate words such as "evaluate".
+        const xssPattern = /<script[\s>]|javascript\s*:|<\/?[a-z]+[^>]*\son\w+\s*=/gi;
         if (xssPattern.test(sanitized)) {
             return {
                 isValid: false,
@@ -362,14 +364,17 @@ class AuthManager {
      */
     checkExistingSession() {
         const session = this.getSession();
+        const path = window.location.pathname;
+        const isLoginPage = path.endsWith('index.html') || path === '/' || path.endsWith('/');
+        const isChatPage = path.endsWith('chat.html');
 
         // If on login page and session exists, redirect to chat
-        if (session && window.location.pathname.includes('index.html')) {
+        if (session && isLoginPage) {
             window.location.href = 'chat.html';
         }
 
         // If on chat page and no session, redirect to login
-        if (!session && window.location.pathname.includes('chat.html')) {
+        if (!session && isChatPage) {
             window.location.href = 'index.html';
         }
     }
